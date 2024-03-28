@@ -4,7 +4,33 @@ import cdsapi
 import os
 
 class RequestBuilder(object):
+    '''
+    Tool to help build CDS API requests and submit them.
     
+    Attributes
+    ----------
+    product_type : str
+        options include reanalysis
+    level_type : str 
+        single or pressure
+    format : str
+        netcdf or grib
+    month : list
+        1 through 12 by default
+    day : list
+        1 through 31 by default
+    times : list
+        hours 00, 06, 12, 18 by default
+    pressure_levels : list
+        None by default
+    year : str
+    
+        
+        
+    Methods
+    -------
+    
+    '''
     
     
     def __init__(self):
@@ -34,11 +60,11 @@ class RequestBuilder(object):
             '00:00', '06:00', '12:00',
             '18:00',
         ]
-        self.pressure_levels = []
-        self.year = ''
-        self.area = []
-        self.save_folder = ''
-        self.file_name = ''
+        self.pressure_levels = None
+        self.year = None
+        self.area = [90, -180, -90, 180]
+        self.save_folder = None
+        self.file_name = None
         
     def buildRequest(self):
         '''
